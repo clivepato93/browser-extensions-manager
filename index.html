@@ -1,80 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+<html lang="en" class="">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Browser extensions manager UI</title>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./assets/images/favicon-32x32.png"
+		/>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+		<title>Frontend Mentor | Browser extensions manager UI</title>
 
-  Extensions List
+		<!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+		<style>
+			.attribution {
+				font-size: 11px;
+				text-align: center;
+			}
+			.attribution a {
+				color: hsl(228, 45%, 44%);
+			}
+		</style>
+		<link href="./src/output.css" rel="stylesheet" />
+		<script src="script.js" defer></script>
+	</head>
+	<body
+		class="bg-no-repeat bg-cover min-h-screen bg-[image:var(--color-light-linear-gradient)] duration-1000 dark:bg-[image:var(--color-dark-linear-gradient)] duration-1000 dark:text-Neutral-200 font-family p-8"
+	>
+		<header
+			class="bg-Neutral-0 flex justify-between p-4 rounded-2xl duration-1000 dark:bg-Neutral-800"
+		>
+			<div class="flex items-center font-bold text-xl">
+				<div
+					src=""
+					alt=""
+					class="w-[50px] h-10 bg-[url(/assets/images/logo.svg)] bg-no-repeat"
+				>
+					<!-- <img src="/assets/images/logo.svg" alt="" class=""> -->
+				</div>
+				Extensions
+			</div>
+			<!-- <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+				<use href="./assets/images/logo.svg" alt="" height="200" width="200"/>
+		</svg> -->
+			<button
+				class="duration-1000 dark:bg-Neutral-700 bg-Neutral-300 flex p-4 rounded-2xl switch"
+			>
+				<img src="/assets/images/icon-sun.svg" alt="" class="sun hidden" />
+				<img src="/assets/images/icon-moon.svg" alt="" class="moon hidden" />
+			</button>
+		</header>
+		<section class="mt-5 flex justify-between items-center p-4">
+			<h1 class="text-2xl">Extensions List</h1>
+				
+			<div class="flex gap-4">
+				<div class="filter-btns">
+						<button class=" rounded-xl py-2 px-4  text-Neutral-900 dark:bg-Neutral-600 bg-Neutral-0 focus:outline-Red-400 focus:outline-2 hover:cursor-pointer active-btn" id="All" active>All</button>
+						<button class=" rounded-xl py-2 px-4  text-Neutral-900 dark:bg-Neutral-600 bg-Neutral-0 focus:outline-Red-400 focus:outline-2 hover:cursor-pointer" id="All">Active</button>
+						<button class=" rounded-xl py-2 px-4  text-Neutral-900 dark:bg-Neutral-600 bg-Neutral-0 focus:outline-Red-400 focus:outline-2 hover:cursor-pointer" id="All">Inactive</button>
+			</div>
+		</section>
+		<!-- If you plan to use the JSON file to populate the data dynamically, you can delete the content below -->
+		<main></main>
 
-  All
-  Active
-  Inactive
-
-  <!-- If you plan to use the JSON file to populate the data dynamically, you can delete the content below -->
-
-  DevLens
-  Quickly inspect page layouts and visualize element boundaries.
-  Remove
-
-  StyleSpy
-  Instantly analyze and copy CSS from any webpage element.
-  Remove
-
-  SpeedBoost
-  Optimizes browser resource usage to accelerate page loading.
-  Remove
-
-  JSONWizard
-  Formats, validates, and prettifies JSON responses in-browser.
-  Remove
-
-  TabMaster Pro
-  Organizes browser tabs into groups and sessions.
-  Remove
-
-  ViewportBuddy
-  Simulates various screen resolutions directly within the browser.
-  Remove
-
-  Markup Notes
-  Enables annotation and notes directly onto webpages for collaborative debugging.
-  Remove
-
-  GridGuides
-  Overlay customizable grids and alignment guides on any webpage.
-  Remove
-
-  Palette Picker
-  Instantly extracts color palettes from any webpage.
-  Remove
-
-  LinkChecker
-  Scans and highlights broken links on any page.
-  Remove
-
-  DOM Snapshot
-  Capture and export DOM structures quickly.
-  Remove
-
-  ConsolePlus
-  Enhanced developer console with advanced filtering and logging.
-  Remove
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+		<div class="attribution">
+			Challenge by
+			<a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+			Coded by <a href="#">Your Name Here</a>.
+		</div>
+	</body>
 </html>

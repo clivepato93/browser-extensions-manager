@@ -1,0 +1,26 @@
+{
+    "name": "browser-extensions-manager-ui-main",
+    "type": "module",
+	"version": "1.0.0",
+	"description": "![Design preview for the Browser extensions manager UI coding challenge](./preview.jpg)",
+	"main": "package_edit_script.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/clivepato93/browser-extensions-manager.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/clivepato93/browser-extensions-manager/issues"
+	},
+	"homepage": "https://github.com/clivepato93/browser-extensions-manager#readme",
+	"dependencies": {
+		"@tailwindcss/cli": "^4.1.3",
+		"tailwindcss": "^4.1.3"
+	}
+}

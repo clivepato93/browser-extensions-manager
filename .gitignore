@@ -37,4 +37,7 @@ npm-debug.log*
 *.log
 *.pem
 .DS_Store
-Thumbs.db
+Thumbs.db\n
+node_modules/**
+package_edit_script.js
+tailwind_script.sh
