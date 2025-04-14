@@ -184,11 +184,20 @@
   }
 }
 @layer utilities {
+  .relative {
+    position: relative;
+  }
   .static {
     position: static;
   }
   .mt-5 {
     margin-top: calc(var(--spacing) * 5);
+  }
+  .mt-8 {
+    margin-top: calc(var(--spacing) * 8);
+  }
+  .mr-4 {
+    margin-right: calc(var(--spacing) * 4);
   }
   .block {
     display: block;
@@ -198,6 +207,9 @@
   }
   .flex {
     display: flex;
+  }
+  .grid {
+    display: grid;
   }
   .hidden {
     display: none;
@@ -211,11 +223,26 @@
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
+  .h-fit {
+    height: fit-content;
+  }
   .min-h-screen {
     min-height: 100vh;
   }
   .w-\[50px\] {
     width: 50px;
+  }
+  .w-\[65\%\] {
+    width: 65%;
+  }
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .grid-rows-4 {
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+  .flex-col {
+    flex-direction: column;
   }
   .items-center {
     align-items: center;
@@ -229,8 +256,18 @@
   .rounded-2xl {
     border-radius: var(--radius-2xl);
   }
+  .rounded-\[8px\] {
+    border-radius: 8px;
+  }
   .rounded-xl {
     border-radius: var(--radius-xl);
+  }
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+  }
+  .border-Neutral-600 {
+    border-color: var(--color-Neutral-600);
   }
   .bg-Neutral-0 {
     background-color: var(--color-Neutral-0);
@@ -256,11 +293,50 @@
   .p-8 {
     padding: calc(var(--spacing) * 8);
   }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
+  }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
   }
+  .px-7 {
+    padding-inline: calc(var(--spacing) * 7);
+  }
+  .px-10 {
+    padding-inline: calc(var(--spacing) * 10);
+  }
+  .px-20 {
+    padding-inline: calc(var(--spacing) * 20);
+  }
+  .px-28 {
+    padding-inline: calc(var(--spacing) * 28);
+  }
+  .px-44 {
+    padding-inline: calc(var(--spacing) * 44);
+  }
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
+  }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
+  }
+  .py-7 {
+    padding-block: calc(var(--spacing) * 7);
+  }
+  .pt-4 {
+    padding-top: calc(var(--spacing) * 4);
+  }
+  .pt-5 {
+    padding-top: calc(var(--spacing) * 5);
+  }
+  .pt-8 {
+    padding-top: calc(var(--spacing) * 8);
+  }
+  .pt-10 {
+    padding-top: calc(var(--spacing) * 10);
   }
   .font-family {
     font-family: var(--font-family);
@@ -272,6 +348,9 @@
   .text-xl {
     font-size: var(--text-xl);
     line-height: var(--tw-leading, var(--text-xl--line-height));
+  }
+  .text-\[1rem\] {
+    font-size: 1rem;
   }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
@@ -287,6 +366,12 @@
   .duration-1000 {
     --tw-duration: 1000ms;
     transition-duration: 1000ms;
+  }
+  .\*\:border-2 {
+    :is(& > *) {
+      border-style: var(--tw-border-style);
+      border-width: 2px;
+    }
   }
   .hover\:cursor-pointer {
     &:hover {
@@ -339,7 +424,11 @@
 		#040918 0%,
 		#091540 100%
 	);
-  --color-light-linear-gradient: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+  --color-light-linear-gradient: linear-gradient(
+		180deg,
+		#ebf2fc 0%,
+		#eef8f9 100%
+	);
 }
 @layer utilities {
   .bg-dark {
@@ -355,6 +444,47 @@
     background-color: var(--color-Red-400);
     color: var(--color-Neutral-0);
   }
+}
+.colourswitch[type="checkbox"] {
+  position: absolute;
+  height: 25px;
+  opacity: 0;
+  width: 45px;
+  z-index: 10;
+  cursor: pointer;
+}
+.colourswitchlabel {
+  background-color: var(--black, black);
+  height: 25px;
+  width: 50px;
+  border-radius: 1.5rem;
+  transition: 1s all;
+}
+.colourswitchlabel::before {
+  z-index: 5;
+  content: "";
+  height: 90%;
+  width: 40%;
+  position: absolute;
+  left: 0%;
+  top: 1px;
+  border-radius: 50%;
+  transition: 1s all;
+  background-color: var(--color-Neutral-0);
+}
+.colourswitch[type="checkbox"]:checked + .colourswitchlabel:before {
+  left: 55%;
+  transition: 1s all;
+}
+.colourswitch[type="checkbox"]:checked ~ div {
+  background-color: var(--aqua, pink);
+  color: var(--white, white);
+  transition: 1s all;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }
 @property --tw-font-weight {
   syntax: "*";
@@ -372,6 +502,7 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
       --tw-font-weight: initial;
       --tw-outline-style: solid;
       --tw-duration: initial;

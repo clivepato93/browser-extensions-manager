@@ -2,6 +2,7 @@ fetch("data.json")
 	.then((response) => response.json())
 	.then((data) => {
 		console.log("Fetched data:", data);
+		
 	})
 	.catch((error) => {
 		console.error("Error loading JSON:", error);
@@ -33,6 +34,7 @@ filterBtns.forEach((btn,index)=>{
 		// }
 	})
 })
+
 
 
 document.querySelector(".switch").addEventListener("click", function (e) {

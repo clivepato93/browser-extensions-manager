@@ -34,10 +34,12 @@
 		#040918 0%,
 		#091540 100%
 	);
-	--color-light-linear-gradient: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+	--color-light-linear-gradient: linear-gradient(
+		180deg,
+		#ebf2fc 0%,
+		#eef8f9 100%
+	);
 }
-
-
 
 /* 
 @media (prefers-color-scheme: light) {
@@ -72,7 +74,51 @@
 		background-image: var(--color-linear-gradient);
 	}
 
-    .active-btn{
-        @apply bg-Red-400  text-Neutral-0;
-    }
+	.active-btn {
+		@apply bg-Red-400  text-Neutral-0;
+	}
+}
+
+.colourswitch[type="checkbox"] {
+	position: absolute;
+	height: 25px;
+	opacity:0;
+	width: 45px;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.colourswitchlabel {
+	background-color: var(--black, black);
+	/* padding:4px 8px; */
+	height: 25px;
+	width: 50px;
+	/* position: absolute; */
+	/* border: 1px solid var(--white); */
+	border-radius: 1.5rem;
+	transition: 1s all;
+}
+
+.colourswitchlabel::before {
+	z-index: 5;
+	content: "";
+	height: 90%;
+	width: 40%;
+	position: absolute;
+	left: 0%;
+	top: 1px;
+	border-radius: 50%;
+	transition: 1s all;
+	@apply bg-Neutral-0;
+}
+
+.colourswitch[type="checkbox"]:checked + .colourswitchlabel:before {
+	left: 55%;
+	transition: 1s all;
+}
+
+.colourswitch[type="checkbox"]:checked ~ div {
+	background-color: var(--aqua, pink);
+	color: var(--white, white);
+	transition: 1s all;
 }
