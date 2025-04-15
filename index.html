@@ -28,7 +28,7 @@
 		<script src="script.js" defer></script>
 	</head>
 	<body
-		class="bg-no-repeat bg-cover min-h-screen bg-[image:var(--color-light-linear-gradient)] duration-1000 dark:bg-[image:var(--color-dark-linear-gradient)] duration-1000 dark:text-Neutral-200 font-family pt-8 px-28"
+		class="bg-no-repeat bg-cover min-h-screen bg-[image:var(--color-light-linear-gradient)] duration-1000 dark:bg-[image:var(--color-dark-linear-gradient)] duration-1000 dark:text-Neutral-200 font-family pt-8 px-4 large:px-28"
 	>
 		<header
 			class="bg-Neutral-0 flex justify-between p-4 rounded-2xl duration-1000 dark:bg-Neutral-800"
@@ -47,44 +47,65 @@
 				<use href="./assets/images/logo.svg" alt="" height="200" width="200"/>
 		</svg> -->
 			<button
-				class="duration-1000 dark:bg-Neutral-700 bg-Neutral-300 flex p-4 rounded-2xl switch"
+				class="duration-1000 dark:bg-Neutral-700 bg-Neutral-300 flex p-4 rounded-2xl switch shrink-0"
 			>
 				<img src="/assets/images/icon-sun.svg" alt="" class="sun hidden" />
 				<img src="/assets/images/icon-moon.svg" alt="" class="moon hidden" />
 			</button>
 		</header>
-		<section class="mt-5 flex justify-between items-center p-4">
-			<h1 class="text-2xl">Extensions List</h1>
-				
-			<div class="flex gap-4">
-				<div class="filter-btns">
-						<button class=" rounded-xl py-2 px-4  text-Neutral-900 dark:bg-Neutral-600 bg-Neutral-0 focus:outline-Red-400 focus:outline-2 hover:cursor-pointer active-btn" id="All" active>All</button>
-						<button class=" rounded-xl py-2 px-4  text-Neutral-900 dark:bg-Neutral-600 bg-Neutral-0 focus:outline-Red-400 focus:outline-2 hover:cursor-pointer" id="All">Active</button>
-						<button class=" rounded-xl py-2 px-4  text-Neutral-900 dark:bg-Neutral-600 bg-Neutral-0 focus:outline-Red-400 focus:outline-2 hover:cursor-pointer" id="All">Inactive</button>
+		<section class="mt-5 cols2:flex justify-between items-center p-4">
+			<h1 class="text-[8vw] text-center cols2:text-2xl">Extensions List</h1>
+
+			<div class="filter-btns flex gap-1 sm:gap-4 *:grow">
+				<button
+					class="rounded-xl py-2 px-4 text-Neutral-900 duration-1000  dark:bg-Neutral-600 bg-Neutral-0 focus:outline-Red-400 focus:outline-2 hover:cursor-pointer active-btn"
+					id="All"
+					active
+				>
+					All
+				</button>
+				<button
+					class="rounded-xl py-2 px-4 text-Neutral-900 duration-1000  dark:bg-Neutral-600 bg-Neutral-0 focus:outline-Red-400 focus:outline-2 hover:cursor-pointer"
+					id="All"
+				>
+					Active
+				</button>
+				<button
+					class="rounded-xl py-2 px-4 text-Neutral-900 duration-1000  dark:bg-Neutral-600 bg-Neutral-0 focus:outline-Red-400 focus:outline-2 hover:cursor-pointer"
+					id="All"
+				>
+					Inactive
+				</button>
 			</div>
 		</section>
 		<!-- If you plan to use the JSON file to populate the data dynamically, you can delete the content below -->
-		<main class="grid grid-cols-3 gap-4 grid-rows-4 p-4">
-			<article class="dark:bg-Neutral-800  bg-Neutral-0  py-7 px-3 flex flex-col justify-between rounded-xl border-2 border-Neutral-600">
-				<section class="header flex gap- *:border-2">
-
-					<img src="/assets/images/logo-devlens.svg" alt="" class="mr-4 h-fit">
+		<main
+			class="cols2:grid cols2:grid-cols-2 cols3:grid-cols-3 gap-4 grid-rows-4 p-4"
+		>
+			<!-- <article
+				class="dark:bg-Neutral-800 bg-Neutral-0 py-7 px-3 flex flex-col justify-between rounded-xl border-2 border-Neutral-100 dark:border-Neutral-600"
+			>
+				<section class="header flex">
+					<img
+						src="/assets/images/logo-devlens.svg"
+						alt=""
+						class="mr-4 h-fit"
+					/>
 					<div class="right">
-					<h3 class="title text-xl font-bold">DevLens
-						
-					</h3>
-					<p class="text-[1rem] w-[65%]">Quickly inspect page layouts and visualize element boundaries.</p>
+						<h3 class="title text-xl font-bold">DevLens</h3>
+						<p class="">
+							Quickly inspect page layouts and visualize element boundaries.
+						</p>
 					</div>
 				</section>
 				<section class="footer mt-8 flex justify-between items-center">
 					<button class="border-2 rounded-xl px-2 py-1">Remove</button>
-					<div class="relative ">
-						<input type="checkbox" class="colourswitch" checked>
-						<div class="colourswitchlabel "></div>
+					<div class="relative">
+						<input type="checkbox" class="colourswitch" checked />
+						<div class="colourswitchlabel"></div>
 					</div>
 				</section>
-			</article>
-
+			</article> -->
 		</main>
 
 		<div class="attribution">

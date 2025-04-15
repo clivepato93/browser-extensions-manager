@@ -4,6 +4,9 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+	--breakpoint-large:1200px;
+	--breakpoint-cols2:600px;
+	--breakpoint-cols3:1050px;
 	--color-Neutral-900: hsl(227, 75%, 14%);
 	--color-Neutral-800: hsl(226, 25%, 17%);
 	--color-Neutral-700: hsl(225, 23%, 24%);
@@ -41,6 +44,24 @@
 	);
 }
 
+@layer base{
+	button,input{
+		cursor: pointer;
+	}
+
+	article{
+		@apply dark:bg-Neutral-800 bg-Neutral-0 py-7 px-3 flex flex-col justify-between rounded-xl border-2 border-Neutral-100 dark:border-Neutral-600
+	}
+
+	section{
+		@apply flex;
+	}
+
+	h3{
+		@apply text-xl font-bold;
+	}
+}
+
 /* 
 @media (prefers-color-scheme: light) {
     .sun{
@@ -64,6 +85,10 @@
 } */
 
 @layer utilities {
+	.extension-img{
+		@apply mr-4 h-fit;
+	}
+
 	.bg-dark {
 		background-image: var(--color-dark-linear-gradient);
 	}
@@ -77,6 +102,10 @@
 	.active-btn {
 		@apply bg-Red-400  text-Neutral-0;
 	}
+
+	.footer{
+		@apply mt-8 flex justify-between items-center
+	}
 }
 
 .colourswitch[type="checkbox"] {
@@ -85,16 +114,13 @@
 	opacity:0;
 	width: 45px;
 	z-index: 10;
-	cursor: pointer;
+
 }
 
 .colourswitchlabel {
 	background-color: var(--black, black);
-	/* padding:4px 8px; */
 	height: 25px;
 	width: 50px;
-	/* position: absolute; */
-	/* border: 1px solid var(--white); */
 	border-radius: 1.5rem;
 	transition: 1s all;
 }
@@ -118,7 +144,6 @@
 }
 
 .colourswitch[type="checkbox"]:checked ~ div {
-	background-color: var(--aqua, pink);
-	color: var(--white, white);
 	transition: 1s all;
+	@apply bg-Red-400
 }
