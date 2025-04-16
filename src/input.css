@@ -104,14 +104,17 @@
 	}
 
 	.footer{
-		@apply mt-8 flex justify-between items-center
+		@apply mt-8 flex justify-between items-center;
+	}
+
+	.remove-btn{
+		@apply border-2 rounded-xl px-2 py-1;
 	}
 }
 
-.test
-
 .colourswitch[type="checkbox"] {
 	position: absolute;
+	top:0;
 	height: 25px;
 	opacity:0;
 	width: 45px;
@@ -120,6 +123,8 @@
 }
 
 .colourswitchlabel {
+	/* position:absolute; */
+	top:0;
 	background-color: var(--black, black);
 	height: 25px;
 	width: 50px;

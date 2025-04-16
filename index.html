@@ -53,10 +53,10 @@
 				<img src="/assets/images/icon-moon.svg" alt="" class="moon hidden" />
 			</button>
 		</header>
-		<section class="mt-5 cols2:flex justify-between items-center p-4">
+		<section class="mt-5 flex flex-col min-[600px]:flex-row  justify-between items-center p-4">
 			<h1 class="text-[8vw] text-center cols2:text-2xl">Extensions List</h1>
 
-			<div class="filter-btns flex gap-1 sm:gap-4 *:grow">
+			<div class="filter-btns flex gap-1 sm:gap-4 *:grow w-full cols2:w-auto">
 				<button
 					class="rounded-xl py-2 px-4 text-Neutral-900 duration-1000  dark:bg-Neutral-600 bg-Neutral-0 focus:outline-Red-400 focus:outline-2 hover:cursor-pointer active-btn"
 					id="All"
@@ -80,7 +80,7 @@
 		</section>
 		<!-- If you plan to use the JSON file to populate the data dynamically, you can delete the content below -->
 		<main
-			class="cols2:grid cols2:grid-cols-2 cols3:grid-cols-3 gap-4 grid-rows-4 p-4"
+			class="grid cols2:grid-cols-2 cols3:grid-cols-3 gap-4 grid-rows-4 p-4"
 		>
 			<!-- <article
 				class="dark:bg-Neutral-800 bg-Neutral-0 py-7 px-3 flex flex-col justify-between rounded-xl border-2 border-Neutral-100 dark:border-Neutral-600"

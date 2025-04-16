@@ -1,3 +1,6 @@
+debugger
+// console.log(localStorage)
+const entries = performance.getEntriesByType('navigation')
 
 function toggle(){
 	document.documentElement.classList.toggle("dark");
@@ -6,30 +9,25 @@ function toggle(){
 }
 
 const filterBtns= [...document.querySelector('.filter-btns').children]
-// console.dir( filterBtns)
 
 filterBtns.forEach((btn,index)=>{
 	btn.addEventListener('click',(e)=>{
-		// debugger
+
 		e.preventDefault()
 		for (let i = 0; i < filterBtns.length; i++) {
 			if(i==index){
 				filterBtns[i].classList.toggle('active-btn',true)
 			}
-			
 			else{
-				filterBtns[i].classList.toggle('active-btn',false)
-				
+				filterBtns[i].classList.toggle('active-btn',false)		
 			}
 		} 
-		// }
 	})
 })
 
 
 
 document.querySelector(".switch").addEventListener("click", function (e) {
-	// setTimeout(toggle,1000)
 	document.documentElement.classList.toggle("dark");
 	// document.documentElement.classList.toggle("light");
 	document.querySelector(".sun").classList.toggle("hidden");
@@ -39,21 +37,7 @@ document.querySelector(".switch").addEventListener("click", function (e) {
 	document.querySelector(".moon").classList.toggle("hidden");
 });
 
-// document.querySelector(".sun").addEventListener("click", function (e) {
-	// 	// debugger
-	// 	document.documentElement.classList.toggle("dark");
-	// 	document.documentElement.classList.toggle("light");
-	
-	// 	document.querySelector(".sun").classList.toggle("block");
-	// 	document.querySelector(".sun").classList.toggle("hidden");
-	
-	// 	document.querySelector(".moon").classList.remove("hidden");
-	// 	document.querySelector(".moon").classList.toggle("block");
-	// });
-	
-	// On page load or when changing themes, best to add inline in `head` to avoid FOUC
-	// debugger
-	// console.log(localStorage.theme)
+
 	document.documentElement.classList.toggle(
 		"dark",
 		localStorage.theme === "dark" ||
@@ -69,7 +53,7 @@ document.querySelector(".switch").addEventListener("click", function (e) {
 	// localStorage.removeItem("theme");
 	// debugger
 	if(document.documentElement.classList.contains("dark")){
-		console.log('test')
+		// console.log('test')
 		document.querySelector(".sun").classList.toggle("hidden");
 		document.querySelector(".sun").classList.toggle("block");
 	}
@@ -79,12 +63,48 @@ document.querySelector(".switch").addEventListener("click", function (e) {
 		document.querySelector(".moon").classList.toggle("block");
 	}
 
-	fetch("data.json")
-		.then((response) => response.json())
-		.then((data) => {
-			console.log("Fetched data:", data);
-			data.forEach((component)=>{
+	function removeData(name,component){
+		const data = JSON.parse(localStorage.extensions)
+		
+		data.forEach((extension,i)=>{
+			if(extension.name == name){
+				const newData=	data.splice(i,1)
+				// console.log(data)
+				console.log('removed')
+				debugger
+				console.log('data ',data, JSON.parse(localStorage.extensions))
+				localStorage.setItem('extensions',JSON.stringify(data));
+				document.querySelector('main').removeChild(component)
+			}
+			
+		})
+	}
 
+	function toggleActive(name){
+		const data = JSON.parse(localStorage.extensions)
+		
+		data.forEach((extension)=>{
+			if(extension.name == name){
+				extension.isActive = !extension.isActive;
+				// const newData=	data.splice(i,1)
+				// console.log(data)
+				console.log('removed')
+				debugger
+				console.log('data ',data )
+				localStorage.setItem('extensions',JSON.stringify(data));
+				console.log(JSON.parse(localStorage.extensions))
+			}
+			
+		})
+		// console.log(component)
+	}
+
+	function generateComponents(){
+		fetch("data.json").then((response) => response.json()).then((data)=>{
+			console.log(data)
+			localStorage.setItem('extensions',JSON.stringify(data))
+			data.forEach((component)=>{
+	
 				const article = document.createElement('article')
 				const section =document.createElement('section')
 				
@@ -99,12 +119,76 @@ document.querySelector(".switch").addEventListener("click", function (e) {
 				sectionRight.classList.add('right')
 				const sectionFooter= document.createElement('section')
 				sectionFooter.classList.add('footer')
+				const button = document.createElement('button');
+				// debugger
+				button.addEventListener('click',function(e){
+					e.preventDefault();
+					removeData(component.name,article)
+					
+				})	
+				button.textContent = 'Remove';
+				const div = document.createElement('div')
+				div.classList.add('relative')
+				const input = document.createElement('input')
+				input.type='checkbox';
+				input.addEventListener('click',function(){
+					toggleActive(component.name)
+				} )
+				input.classList.add('colourswitch')
+				input.checked = component.isActive? 'checked':'';
+				const colourswitchlabel = document.createElement('div')
+				colourswitchlabel.classList.add('colourswitchlabel')
+				// <input type="checkbox" class="colourswitch" checked />
+				// <div class="colourswitchlabel"></div>
+				div.append(input,colourswitchlabel)
+				sectionFooter.append(button,div)
+				button.classList.add('remove-btn');
 				section.append(img,sectionRight)
 				sectionRight.append(h3,paragraph)
-				article.append(section)
+				article.append(section,sectionFooter)
 				document.querySelector('main').append(article)
 			})
-			
+			// localStorage.setItem('extensions',JSON.stringify( data))
+		}).catch((error) => {
+			console.error("Error loading JSON:", error);
+		});
+		
+		
+	}
+
+	generateComponents()
+
+
+
+
+entries.forEach((entry)=>{
+	if(entry.type=='reload'){
+		debugger
+		console.log('reload')
+		localStorage.clear()
+		// const data = fetch("data.json").then((response) => response.json()).then((data)=>{
+		// 	console.log(data)
+		// 	localStorage.setItem('extensions',JSON.stringify( data))
+		// 	debugger
+		// }).catch((error) => {
+		// 	console.error("Error loading JSON:", error);
+		// });
+		// localStorage.setItem('extensions',JSON.stringify(data))
+	}})
+// 	} 
+// })
+// const observer = new PerformanceObserver((list)=>{
+// 	list.getEntries().forEach((entry)=>{
+// 		if(entry.type=='reload'){
+// 			debugger
+// 			console.log('reload')
+// 			localStorage.clear();
+
+// 		}
+// 	})
+// })
+
+
 			/*
 			<article
 				class="dark:bg-Neutral-800 bg-Neutral-0 py-7 px-3 flex flex-col justify-between rounded-xl border-2 border-Neutral-100 dark:border-Neutral-600"
@@ -123,7 +207,7 @@ document.querySelector(".switch").addEventListener("click", function (e) {
 					</div>
 				</section>
 				<section class="footer mt-8 flex justify-between items-center">
-					<button class="border-2 rounded-xl px-2 py-1">Remove</button>
+					<button class="remove-btn">Remove</button>
 					<div class="relative">
 						<input type="checkbox" class="colourswitch" checked />
 						<div class="colourswitchlabel"></div>
@@ -132,7 +216,5 @@ document.querySelector(".switch").addEventListener("click", function (e) {
 			</article>
 			*/
 			
-		})
-		.catch((error) => {
-			console.error("Error loading JSON:", error);
-		});
+		
+
