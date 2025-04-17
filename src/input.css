@@ -45,6 +45,7 @@
 }
 
 @layer base{
+
 	button,input{
 		cursor: pointer;
 	}
@@ -108,7 +109,7 @@
 	}
 
 	.remove-btn{
-		@apply border-2 rounded-xl px-2 py-1;
+		@apply border-2 rounded-xl px-2 py-1 focus:border-red-600;
 	}
 }
 

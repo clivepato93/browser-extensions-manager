@@ -7,6 +7,8 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-500: oklch(63.7% 0.237 25.331);
+    --color-red-600: oklch(57.7% 0.245 27.325);
     --spacing: 0.25rem;
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
@@ -215,9 +217,6 @@
   .hidden {
     display: none;
   }
-  .inline {
-    display: inline;
-  }
   .table {
     display: table;
   }
@@ -352,10 +351,10 @@
       }
     }
   }
-  .focus\:outline-2 {
+  .focus\:outline-4 {
     &:focus {
       outline-style: var(--tw-outline-style);
-      outline-width: 2px;
+      outline-width: 4px;
     }
   }
   .focus\:outline-Red-400 {
@@ -505,6 +504,9 @@
     border-width: 2px;
     padding-inline: calc(var(--spacing) * 2);
     padding-block: calc(var(--spacing) * 1);
+    &:focus {
+      border-color: var(--color-red-600);
+    }
   }
 }
 .colourswitch[type="checkbox"] {
