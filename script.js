@@ -1,17 +1,5 @@
-// debugger
-// console.log(localStorage)
-// localStorage.clear();
-// if (localStorage.length == 0) {
-// 	console.log("cleared");
-// }
-let extensionData = [];
-// fetch("data.json").then((response) => response.json()).then((data)=>{
-// 	console.log(data)
-// 	localStorage.setItem('extensions',JSON.stringify(data))
-// 	console.log(localStorage)
-// })
 
-const entries = performance.getEntriesByType("navigation");
+let extensionData = [];
 
 function toggle() {
 	document.documentElement.classList.toggle("dark");
@@ -54,12 +42,7 @@ document.querySelector(".switch").addEventListener("click", function (e) {
 	document.querySelector(".moon").classList.toggle("hidden");
 });
 
-document.documentElement.classList.toggle(
-	"dark",
-	localStorage.theme === "dark" ||
-		(!("theme" in localStorage) &&
-			window.matchMedia("(prefers-color-scheme: dark)").matches)
-);
+document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches));
 // Whenever the user explicitly chooses light mode
 // localStorage.theme = "light";
 // console.log(localStorage.theme)
