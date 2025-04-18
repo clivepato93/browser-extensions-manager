@@ -42,7 +42,7 @@ document.querySelector(".switch").addEventListener("click", function (e) {
 	document.querySelector(".moon").classList.toggle("hidden");
 });
 
-document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches));
+document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);
 // Whenever the user explicitly chooses light mode
 // localStorage.theme = "light";
 // console.log(localStorage.theme)
