@@ -1,9 +1,10 @@
 // debugger
 // console.log(localStorage)
-localStorage.clear();
-if (localStorage.length == 0) {
-	console.log("cleared");
-}
+// localStorage.clear();
+// if (localStorage.length == 0) {
+// 	console.log("cleared");
+// }
+let extensionData = [];
 // fetch("data.json").then((response) => response.json()).then((data)=>{
 // 	console.log(data)
 // 	localStorage.setItem('extensions',JSON.stringify(data))
@@ -77,75 +78,74 @@ if (document.documentElement.classList.contains("dark")) {
 }
 
 function removeData(name, component) {
-	const data = JSON.parse(localStorage.extensions);
-
-	data.forEach((extension, i) => {
+	
+	extensionData.forEach((extension, i) => {
+		debugger
 		if (extension.name == name) {
-			const newData = data.splice(i, 1);
-			// console.log(data)
-			// console.log('removed')
-
-			// debugger
-			console.log("data ", data, JSON.parse(localStorage.extensions));
-			localStorage.setItem("extensions", JSON.stringify(data));
+			extensionData.splice(i, 1);
 			document.querySelector("main").removeChild(component);
 		}
 	});
 }
 
-function toggleActive(name) {
-	const data = JSON.parse(localStorage.extensions);
-
-	data.forEach((extension) => {
+function toggleActiveState(name) {
+	
+	
+	
+	extensionData.forEach((extension) => {
+		debugger;
 		if (extension.name == name) {
 			extension.isActive = !extension.isActive;
-			// const newData=	data.splice(i,1)
-			// console.log(data)
-			console.log("removed");
-			debugger;
-			console.log("data ", data);
-			localStorage.setItem("extensions", JSON.stringify(data));
-			console.log(JSON.parse(localStorage.extensions));
 		}
 	});
-	// console.log(component)
+	setTimeout(function(){
+		if(filterBtns[1].classList.contains('active-btn') ){
+			generateComponents(true)
+		}
+		
+		else if(filterBtns[2].classList.contains('active-btn') ){
+			generateComponents(false)
+		}
+
+	},1050)
+
+	
+
 }
 
 function generateComponents(filter = null) {
 	document.querySelector("main").innerHTML = "";
 
 	if (filter === true) {
-		const data = JSON.parse(localStorage.extensions).filter(
+		const data= extensionData.filter(
 			(component) => component.isActive == true
 		);
 		data.forEach((component) => {
 			createComponent(component);
 		});}
 		else if (filter === false) {
-			console.log("line 134");
-			const data = JSON.parse(localStorage.extensions).filter(
+			const data = extensionData.filter(
 				(component) => component.isActive === false
 			);
 			data.forEach((component) => {
 				createComponent(component);
 			});
 		}
-	 else if (localStorage.extensions) {
-		JSON.parse(localStorage.extensions).forEach((component) => {
+	 else if (extensionData.length) {
+		extensionData.forEach((component) => {
 			createComponent(component);
 		});
 	}
-	// debugger
 	else {
 		fetch("data.json")
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
-				localStorage.setItem("extensions", JSON.stringify(data));
+				debugger
 				data.forEach((component) => {
 					createComponent(component);
+					extensionData.push(component)
 				});
-				// localStorage.setItem('extensions',JSON.stringify( data))
 			})
 			.catch((err) => console.log(err));
 	}
@@ -169,7 +169,6 @@ function createComponent(component) {
 	const sectionFooter = document.createElement("section");
 	sectionFooter.classList.add("footer");
 	const button = document.createElement("button");
-	// debugger
 	button.addEventListener("click", function (e) {
 		e.preventDefault();
 		removeData(component.name, article);
@@ -180,14 +179,12 @@ function createComponent(component) {
 	const input = document.createElement("input");
 	input.type = "checkbox";
 	input.addEventListener("click", function () {
-		toggleActive(component.name);
+		toggleActiveState(component.name);
 	});
 	input.classList.add("colourswitch");
 	input.checked = component.isActive ? "checked" : "";
 	const colourswitchlabel = document.createElement("div");
 	colourswitchlabel.classList.add("colourswitchlabel");
-	// <input type="checkbox" class="colourswitch" checked />
-	// <div class="colourswitchlabel"></div>
 	div.append(input, colourswitchlabel);
 	sectionFooter.append(button, div);
 	button.classList.add("remove-btn");
@@ -196,57 +193,3 @@ function createComponent(component) {
 	article.append(section, sectionFooter);
 	document.querySelector("main").append(article);
 }
-
-// entries.forEach((entry)=>{
-// 	if(entry.type=='reload'){
-// 		debugger
-// 		console.log('reload')
-// 		localStorage.clear()
-// const data = fetch("data.json").then((response) => response.json()).then((data)=>{
-// 	console.log(data)
-// 	localStorage.setItem('extensions',JSON.stringify( data))
-// 	debugger
-// }).catch((error) => {
-// 	console.error("Error loading JSON:", error);
-// });
-// localStorage.setItem('extensions',JSON.stringify(data))
-// }})
-// 	}
-// })
-// const observer = new PerformanceObserver((list)=>{
-// 	list.getEntries().forEach((entry)=>{
-// 		if(entry.type=='reload'){
-// 			debugger
-// 			console.log('reload')
-// 			localStorage.clear();
-
-// 		}
-// 	})
-// })
-
-/*
-			<article
-				class="dark:bg-Neutral-800 bg-Neutral-0 py-7 px-3 flex flex-col justify-between rounded-xl border-2 border-Neutral-100 dark:border-Neutral-600"
-			>
-				<section class="header flex">
-					<img
-						src="/assets/images/logo-devlens.svg"
-						alt=""
-						class="mr-4 h-fit"
-					/>
-					<div class="right">
-						<h3 class="title text-xl font-bold">DevLens</h3>
-						<p class="">
-							Quickly inspect page layouts and visualize element boundaries.
-						</p>
-					</div>
-				</section>
-				<section class="footer mt-8 flex justify-between items-center">
-					<button class="remove-btn">Remove</button>
-					<div class="relative">
-						<input type="checkbox" class="colourswitch" checked />
-						<div class="colourswitchlabel"></div>
-					</div>
-				</section>
-			</article>
-			*/
