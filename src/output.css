@@ -503,8 +503,20 @@
     border-width: 2px;
     padding-inline: calc(var(--spacing) * 2);
     padding-block: calc(var(--spacing) * 1);
+    --tw-duration: 500ms;
+    transition-duration: 500ms;
     &:focus {
-      border-color: var(--color-red-600);
+      background-color: var(--color-Neutral-600);
+    }
+    &:focus {
+      color: var(--color-Neutral-800);
+    }
+    &:focus {
+      outline-style: var(--tw-outline-style);
+      outline-width: 2px;
+    }
+    &:focus {
+      outline-color: var(--color-red-600);
     }
   }
 }
